@@ -44,6 +44,7 @@ public class test1 {
 		 zd.akcjeZamknij();
 		 zz = new ZamykanieZadania(driver);
 		 zz.zamknijZadanie("Powodzenie", "komentarz");
+		 //asdasdasd
 
 		 
 
