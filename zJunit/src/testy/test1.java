@@ -10,10 +10,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import LoginPage.loginPage;
 import Zadania.ZadaniaSection;
 import Zadania.ZadaniaSzczegoly;
+import Zadania.ZamykanieZadania;
 import kokpit.menuGorne;
 import kokpit.menuLewe;
 
-public class test {
+public class test1 {
 	protected WebDriver driver;
 
 	loginPage lgp;
@@ -21,6 +22,7 @@ public class test {
 	menuLewe ml;
 	ZadaniaSection zd;
 	ZadaniaSzczegoly zs;
+	ZamykanieZadania zz;
 	 
 	@Before	
 	public void setup(){	 
@@ -33,31 +35,21 @@ public class test {
 	 public void test123() throws InterruptedException {
 		 lgp = new loginPage(driver);
 		 lgp.loginToArena("groszkowskimichal@gmail.com", "Gro3chu!");
-		 
+		
 		 ml = new menuLewe(driver);
 		 ml.getZadania();
-		 
 		 zd = new ZadaniaSection(driver);
-		 zd.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "[Wszystkie]", "10");
-		 zd.dodajNoweZadanie();
+		 zd.WybierzFiltrStatus("Nowe");
+		 zd.kliknijPrzyciskFiltr();
+		 zd.akcjeZamknij();
+		 zz = new ZamykanieZadania(driver);
+		 zz.zamknijZadanie("Powodzenie", "komentarz");
+
 		 
-		 zs = new ZadaniaSzczegoly(driver);
-		 zs.dodajsrodowisko("Nowe srodowisko");
-		 zs.wybierzWydanie("wyd1");
-		 zs.dodajWersje("nowa wersja");
-		 zs.WybierzPriorytet("Krytyczny");
-		 zs.WybierzTerminrealizacji("2018-08-23 23:59");
-		 zs.prypiszDoKogos("Mi");
-		 zs.dodajTytul("tytul1");
-		 zs.dodajOpis("opis opis opis");
-		 zs.zapiszZmiany();
-		 
-		 ml.getZadania();
-		 
-		 zd.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "[Wszystkie]", "10");
-	
+
+		 //zd.WybierzFiltrWydanie("wyd1");
+		
+
 	 }
-	 
-	
 
 }

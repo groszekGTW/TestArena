@@ -30,13 +30,10 @@ public class ZadaniaSzczegoly {
 		By terminRealizacjiPole = By.id("dueDate");
 		By przypiszDo = By.id("assigneeName");
 		By przypiszDoKtos = By.xpath("//li[@class='ui-menu-item']");
-		//By.id("ui-id-8");
 		By zapisz = By.id("save");
 		
-		/*By terminRealizacjiMiesiac = By.xpath("//select[@class='ui-datepicker-month']");
-		By terminRealizacjiRok = By.xpath("//select[@class='ui-datepicker-year']"); 
-		*/
 		
+			
 		public void dodajTytul(String tytul){
 			driver.findElement(tytulPole).sendKeys(tytul);
 		}
@@ -46,6 +43,11 @@ public class ZadaniaSzczegoly {
 			Thread.sleep(2000);
 			driver.findElement(srodowiska).sendKeys(Keys.ENTER);			
 		}
+		
+		public void wybierzWydanie(String wydanie){
+			driver.findElement(wydaniePole).sendKeys(wydanie);
+		}
+		
 		
 		public void dodajWersje(String wersja) throws InterruptedException{			
 			driver.findElement(wersje).sendKeys(wersja);

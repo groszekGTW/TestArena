@@ -13,33 +13,25 @@ public class ZadaniaSection {
 		WebDriver driver;
 		
 		By dodajZadanie = By.xpath("//a[@href='http://testarena.gpe.pl/task_add']");
-		
 		By filtrWydanie = By.xpath("//select[@id='release']");
-		
-		By filtrFaza = By.xpath("//select[@id='phase']");
-		
-		By filtrStatus = By.xpath("//select[@id='status']");
-		
-		By filtrPriorytet = By.xpath("//select[@id='priority']");
-		
-		By filtrPrzydzielil = By.xpath("//select[@id='assigner']");
-		
-		By filtrPrzydzieloneDo = By.xpath("//select[@id='assignee']");
-		
-		By filtrSrodowisko = (By.xpath("//select[@id='environment']"));
-		
-		By filtrWynik = By.xpath("//select[@id='resultCountPerPage']");
-		
-		By CheckboxPrzekroczonyTermin = By.xpath("//input[@id='exceededDueDate']");
-		
+		By filtrFaza = By.xpath("//select[@id='phase']");		
+		By filtrStatus = By.xpath("//select[@id='status']");		
+		By filtrPriorytet = By.xpath("//select[@id='priority']");		
+		By filtrPrzydzielil = By.xpath("//select[@id='assigner']");		
+		By filtrPrzydzieloneDo = By.xpath("//select[@id='assignee']");		
+		By filtrSrodowisko = (By.xpath("//select[@id='environment']"));		
+		By filtrWynik = By.xpath("//select[@id='resultCountPerPage']");		
+		By CheckboxPrzekroczonyTermin = By.xpath("//input[@id='exceededDueDate']");		
 		By przyciskFiltr = By.xpath("//button[@id='j_filterButton']");
+		By akcjeLista = By.id("action_icon");
+		By akcjeListaZamknij = By.xpath("//a[contains(.,'Zamknij')]");
+		
 		
 		public void dodajNoweZadanie(){
 			driver.findElement(dodajZadanie).click();
 		}
 			
 		public void WybierzFiltrWydanie(String wydanie){
-			//WebElement element = driver.findElement(By.xpath("//select[@id='release']")); 
 			WebElement element = driver.findElement(filtrWydanie); 
 						Select dropDown = new Select(element); 
 			dropDown.selectByVisibleText(wydanie);
@@ -94,17 +86,32 @@ public class ZadaniaSection {
 			driver.findElement(przyciskFiltr).click();
 		}
 		
-		public void filtrowaniePrzezFiltry(String wydanie,String faza,String status,String priorytet,String przydzielil,String przydzieloneDo,String srodowisko,String wynik){
-					
-			this.WybierzFiltrWydanie(wydanie);
-			this.wybierzFiltrFaze(faza);
+		public void tytulLista(String tekst){
+			driver.findElement(By.xpath("//td[@class='title_task_max']")).getText();
+			System.out.println(tekst);
+
+		}
+		
+		public void akcjeZamknij() throws InterruptedException{
+			driver.findElement(akcjeLista).click();
+			Thread.sleep(2000);
+			driver.findElement(akcjeListaZamknij).click();
+			
+		}
+				
+		public void akcjeZamknij1(String akcja){
+			WebElement element = driver.findElement(akcjeLista); 
+			Select dropDown = new Select(element); 
+			dropDown.selectByVisibleText(akcja);
+		}
+		public void filtrowaniePrzezFiltry(String status,String priorytet,String przydzielil,String przydzieloneDo,String srodowisko,String wynik){
+						
 			this.WybierzFiltrStatus(status);
 			this.WybierzFiltrPriorytet(priorytet);
 			this.WybierzfiltrPrzydzielil(przydzielil);
 			this.WybierzfiltrPrzydzieloneDo(przydzieloneDo);
 			this.WybierzfiltrSrodowisko(srodowisko);
 			this.WybierzfiltrWynik(wynik);
-			this.ZaznaczCheckboxPrzekroczonyTermin();
 			this.kliknijPrzyciskFiltr();
 		}
 	
