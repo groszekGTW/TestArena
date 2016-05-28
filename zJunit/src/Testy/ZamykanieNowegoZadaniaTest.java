@@ -57,6 +57,9 @@ public class ZamykanieNowegoZadaniaTest {
 		 
 		 zz = new ZamykanieZadania(driver);
 		 zz.zamykanieZadania("Powodzenie", "komentarz");
+		 
+		 zd.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "Nowe srodowisko", "10");
+
 	
 	 }
 	 
