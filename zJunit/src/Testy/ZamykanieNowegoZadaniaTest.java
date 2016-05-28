@@ -56,7 +56,7 @@ public class ZamykanieNowegoZadaniaTest {
 		 zd.akcjeZamknij();
 		 
 		 zz = new ZamykanieZadania(driver);
-		 zz.zamknijZadanie("Powodzenie", "komentarz");
+		 zz.zamykanieZadania("Powodzenie", "komentarz");
 	
 	 }
 	 

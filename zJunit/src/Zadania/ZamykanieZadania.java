@@ -52,10 +52,12 @@ public class ZamykanieZadania {
 		}
 
 
-		public void zamknijZadanie(String status, String komentarz){
+		public void zamykanieZadania(String status, String komentarz){
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(komentarzPole));
 			this.WybierzStatusRozwiazania(status);
+			this.dodajKomentarz(komentarz);
+			this.zamknijZadanie();
 			
 		}
 }
