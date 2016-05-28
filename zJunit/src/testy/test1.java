@@ -1,56 +1,78 @@
 package testy;
 
+
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import LoginPage.loginPage;
-import Zadania.ZadaniaSection;
-import Zadania.ZadaniaSzczegoly;
-import Zadania.ZamykanieZadania;
-import kokpit.menuGorne;
-import kokpit.menuLewe;
+import LoginPage.LogowanieUzytkownika;
+import Srodowisko.ElementySrodowiska;
+import Srodowisko.FunkcjeSrodowiska;
+import kokpit.MenuLewe;
+
 
 public class test1 {
 	protected WebDriver driver;
-
-	loginPage lgp;
-	menuGorne mg;
-	menuLewe ml;
-	ZadaniaSection zd;
-	ZadaniaSzczegoly zs;
-	ZamykanieZadania zz;
-	 
-	@Before	
-	public void setup(){	 
-	        driver = new FirefoxDriver();	 
-	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	 
-	        driver.get("http://testarena.gpe.pl");
-	 }
-	 
-	 @Test
-	 public void test123() throws InterruptedException {
-		 lgp = new loginPage(driver);
-		 lgp.loginToArena("groszkowskimichal@gmail.com", "Gro3chu!");
+	
+	LogowanieUzytkownika lu;
+	MenuLewe ml;
+	ElementySrodowiska es;
+	FunkcjeSrodowiska fs;
+	
+	
+	
+	@Before
+	public void setup(){
+		driver = new FirefoxDriver();	 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	 
+        driver.get("http://testarena.gpe.pl");
+ }
+	
+	
+	@Test
+	public void TestSrodowisko() throws InterruptedException {
+		lu = new LogowanieUzytkownika(driver);
+		lu.loginToArena("grzegorzjasik@wp.pl", "Password12#");
+	
+		ml = new MenuLewe(driver);
+		ml.otworzMenuSrodowisko();
 		
-		 ml = new menuLewe(driver);
-		 ml.getZadania();
-		 zd = new ZadaniaSection(driver);
-		 zd.WybierzFiltrStatus("Nowe");
-		 zd.kliknijPrzyciskFiltr();
-		 zd.akcjeZamknij();
-		 zz = new ZamykanieZadania(driver);
-		 zz.zamknijZadanie("Powodzenie", "komentarz");
-		 //asdasdasd
+		es = new ElementySrodowiska(driver);
+		es.DodajNoweSrodowisko();
 
 		 
 
-		 //zd.WybierzFiltrWydanie("wyd1");
+		
+		fs = new FunkcjeSrodowiska(driver);
+		fs.DodajNowaNazwe("ŒrodowiskoTest");
+		fs.DodajNowyOpis("Tutaj znajdujê siê opis œrodowiska");
+		fs.ZapiszSrodowisko();
+		
+		es.EdytujIkona();
+		es.EdytujSrodowisko();
+		fs.UsunNazwe();
+		fs.DodajNowaNazwe("SrodowiskoPoEdytowaniu");
+		fs.UsunOpis();
+		fs.DodajNowyOpis("Tutaj znadujê siê zmodyfikowany opis œrodowiska");
+		fs.ZapiszSrodowisko();
+		
 		
 
-	 }
+
+		es.EdytujIkona();
+		es.UsunSrodowisko();
+		es.PotwierdzUsun();
+		
+		
+}
+	@After
+	public void Quit(){
+	driver.quit();
+	}
 
 }
+
