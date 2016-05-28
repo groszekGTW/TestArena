@@ -1,4 +1,4 @@
-package testy;
+package Testy;
 
 
 import java.util.concurrent.TimeUnit;
