@@ -24,6 +24,7 @@ public class ZadaniaSekcja {
 		private By przyciskFiltr = By.xpath("//button[@id='j_filterButton']");
 		private By akcjeLista = By.id("action_icon");
 		private By akcjeListaZamknij = By.xpath("//a[contains(.,'Zamknij')]");
+		private By komunikat = By.id("j_info_box");
 				
 		public By getTytulWidoku(){
 			WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -65,7 +66,7 @@ public class ZadaniaSekcja {
 		public void WybierzFiltrStatus(String status){
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(filtrStatus));
-			driver.findElement(dodajZadanie).isEnabled();
+			driver.findElement(filtrStatus).isEnabled();
 			System.out.println("Pole filtr status jest dostêpne");
 			WebElement element = driver.findElement(filtrStatus); 
 			Select dropDown = new Select(element); 
@@ -137,8 +138,7 @@ public class ZadaniaSekcja {
 
 			driver.findElement(przyciskFiltr).click();
 		}
-		
-			
+					
 		public void akcjeZamknij() throws InterruptedException{
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(akcjeLista));
@@ -156,6 +156,12 @@ public class ZadaniaSekcja {
 			Assert.assertEquals(Expected, "Zadania");
 		}
 		
+		public void sprawdzKomunikatPoZamknieciuZadania(){
+			WebDriverWait wait = new WebDriverWait(driver, 5);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(komunikat));
+			String Expected=driver.findElement(komunikat).getText();
+			Assert.assertEquals(Expected, "Zadanie zosta³o zamkniête.");
+		}
 		public void filtrowaniePrzezFiltry(String status,String priorytet,String przydzielil,String przydzieloneDo,String srodowisko,String wynik){
 						
 			this.WybierzFiltrStatus(status);
