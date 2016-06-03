@@ -1,4 +1,4 @@
-package pages.otherpages.wersje;
+package pages.otherpages.version;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class WersjeSekcja {
+public class VersionSection {
 	
 			WebDriver driver;
 	
@@ -31,7 +31,7 @@ public class WersjeSekcja {
 				return (tytulWidoku);
 			}
 			
-			public WersjeSekcja(WebDriver driver) {
+			public VersionSection(WebDriver driver) {
 				this.driver = driver;
 			}
 			public void dodajNowaWersje(){

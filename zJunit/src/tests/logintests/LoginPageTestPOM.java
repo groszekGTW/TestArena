@@ -5,13 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import pages.loginpages.LogowanieUzytkownika;
 
-public class LogowanieTestPOM {	
+public class LoginPageTestPOM {	
 		
 			protected WebDriver driver;
-			LogowanieUzytkownika lgp;	
 			 
 			@Before	
 			public void setup(){
@@ -20,9 +18,10 @@ public class LogowanieTestPOM {
 			 }
 			 
 			 @Test
-			 public void test123() throws InterruptedException {
-				 lgp = new LogowanieUzytkownika(driver);
-				 lgp.loginToArena("groszkowskimichal@gmail.com", "Gro3chu!");	
+			 public void poprawneLogowanie() throws InterruptedException {
+				 LogowanieUzytkownika LoogowanieUzytkownika = new LogowanieUzytkownika(driver);
+				 LoogowanieUzytkownika.loginAs("groszkowskimichal@gmail.com", "Gro3chu!");
+				 
 			 }	 
 			@After
 			public void closeBrowser() {

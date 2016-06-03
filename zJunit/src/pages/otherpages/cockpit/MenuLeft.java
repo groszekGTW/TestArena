@@ -1,15 +1,15 @@
-package pages.otherpages.kokpit;
+package pages.otherpages.cockpit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MenuLewe {
+public class MenuLeft {
 	
 	protected WebDriver driver;
 
-	public MenuLewe(WebDriver driver) {
+	public MenuLeft(WebDriver driver) {
 		this.driver = driver;
 	}
 	

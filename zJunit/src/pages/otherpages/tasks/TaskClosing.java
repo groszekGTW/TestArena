@@ -1,4 +1,4 @@
-package pages.otherpages.zadania;
+package pages.otherpages.tasks;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,9 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ZamykanieZadania {
+public class TaskClosing {
 	
-	public ZamykanieZadania(WebDriver driver) {
+	public TaskClosing(WebDriver driver) {
 		this.driver = driver;
 		}
 		

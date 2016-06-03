@@ -7,17 +7,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import pages.loginpages.LogowanieUzytkownika;
-import pages.otherpages.kokpit.MenuLewe;
-import pages.otherpages.wersje.WersjeSekcja;
-import pages.otherpages.wersje.WersjeSzczegolyNowej;
+import pages.otherpages.cockpit.MenuLeft;
+import pages.otherpages.version.VersionSection;
+import pages.otherpages.version.VersionAddingDetails;
 
-public class EdycjaNowejWersjiTestPOM {
+public class VersionTestPOM {
 	
 	protected WebDriver driver;
 	LogowanieUzytkownika lgp;
-	MenuLewe ml;
-	WersjeSekcja ws;
-	WersjeSzczegolyNowej wsn;
+	MenuLeft ml;
+	VersionSection ws;
+	VersionAddingDetails wsn;
 	 
 	@Before	
 	public void setup(){
@@ -28,16 +28,16 @@ public class EdycjaNowejWersjiTestPOM {
 	 @Test
 	 public void test123() throws InterruptedException {
 		 lgp = new LogowanieUzytkownika(driver);
-		 lgp.loginToArena("groszkowskimichal@gmail.com", "Gro3chu!");	
+		 lgp.loginAs("groszkowskimichal@gmail.com", "Gro3chu!");	
 		 
-		 ml = new MenuLewe(driver);
+		 ml = new MenuLeft(driver);
 		 ml.otworzMenuWersje();
 		 
-		 ws =  new WersjeSekcja(driver);
+		 ws =  new VersionSection(driver);
 		 ws.asercjaWersje();
 		 ws.dodajNowaWersje();
 		 
-		 wsn = new WersjeSzczegolyNowej(driver);
+		 wsn = new VersionAddingDetails(driver);
 		 wsn.zapiszNowaWersje("wersja4");
 		 
 		 ws.sprawdzKomunikatPoZapisieWersji();

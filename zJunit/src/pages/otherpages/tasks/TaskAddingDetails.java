@@ -1,4 +1,4 @@
-package pages.otherpages.zadania;
+package pages.otherpages.tasks;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
-public class ZadaniaSzczegolyNowego {
+public class TaskAddingDetails {
 	
-		public ZadaniaSzczegolyNowego(WebDriver driver) {
+		public TaskAddingDetails(WebDriver driver) {
 		this.driver = driver;
 		}
 		

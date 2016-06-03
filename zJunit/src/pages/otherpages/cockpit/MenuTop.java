@@ -1,4 +1,4 @@
-package pages.otherpages.kokpit;
+package pages.otherpages.cockpit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +7,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
-public class MenuGorne {
+public class MenuTop {
 	
 	protected WebDriver driver;
 
-	public MenuGorne(WebDriver driver) {
+	public MenuTop(WebDriver driver) {
 		this.driver = driver;
 	}
 	

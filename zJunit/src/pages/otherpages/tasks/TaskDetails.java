@@ -1,4 +1,4 @@
-package pages.otherpages.zadania;
+package pages.otherpages.tasks;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,9 +6,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class ZadaniaSzczegoly {
+public class TaskDetails {
 	
-	public ZadaniaSzczegoly(WebDriver driver) {
+	public TaskDetails(WebDriver driver) {
 		this.driver = driver;
 		}
 		
@@ -18,11 +18,9 @@ public class ZadaniaSzczegoly {
 		private By komunikat = By.id("j_info_box");
 
 		
-		public void sprawdzKomunikatPoDodaniuZadania(){
+		public void getInfoBoxtext(){
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(komunikat));
-			String Expected=driver.findElement(komunikat).getText();
-			Assert.assertEquals(Expected, "Zadanie zosta³o dodane.");
 		}
 
 }
