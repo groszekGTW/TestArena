@@ -2,11 +2,8 @@ package pages.otherpages.version;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
 import utils.PageUtils;
 
 public class VersionSection {
@@ -63,14 +60,10 @@ public class VersionSection {
 				PageUtils.click(driver, szukajPrzycisk, "Przycisk szukaj");
 			}
 			
-			public void getPopupDelete(){
-				PageUtils.returnElement(driver, komunikatDecyzji);
-			}
+			
 			public void	clickYes(){
 				PageUtils.click(driver, komunikatDecyzjiTak, "Przycisk tak w komunikacie decyzji");
-			}
-
-						
+			}			
 			
 			public void getInfoBoxAfterEdit(){
 				WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -97,7 +90,7 @@ public class VersionSection {
 			}
 			
 			public  void choseYes(){
-				this.getPopupDelete();
+				this.getInfoBoxAfterTryToDelete();
 				this.clickYes();
 			}
 

@@ -56,10 +56,6 @@ public class PageUtils {
 		dropDown.selectByVisibleText(key);
 	}
 	
-	public static By  returnElement(WebDriver driver,By byElement){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(byElement));
-		return byElement;
-	}
+
 
 }
