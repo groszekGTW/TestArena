@@ -1,4 +1,4 @@
-package kokpit;
+package pages.otherpages.kokpit;
 
 public class KokpitSzczegoly {
 

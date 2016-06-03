@@ -1,4 +1,4 @@
-package kokpit;
+package pages.otherpages.kokpit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

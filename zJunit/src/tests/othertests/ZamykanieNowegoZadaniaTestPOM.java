@@ -1,16 +1,17 @@
-package Testy;
+package tests.othertests;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import LoginPage.LogowanieUzytkownika;
-import Zadania.ZadaniaSekcja;
-import Zadania.ZadaniaSzczegoly;
-import Zadania.ZadaniaSzczegolyNowego;
-import Zadania.ZamykanieZadania;
-import kokpit.MenuGorne;
-import kokpit.MenuLewe;
+
+import pages.loginpages.LogowanieUzytkownika;
+import pages.otherpages.kokpit.MenuGorne;
+import pages.otherpages.kokpit.MenuLewe;
+import pages.otherpages.zadania.ZadaniaSekcja;
+import pages.otherpages.zadania.ZadaniaSzczegoly;
+import pages.otherpages.zadania.ZadaniaSzczegolyNowego;
+import pages.otherpages.zadania.ZamykanieZadania;
 
 public class ZamykanieNowegoZadaniaTestPOM {
 	protected WebDriver driver;
@@ -44,7 +45,6 @@ public class ZamykanieNowegoZadaniaTestPOM {
 			 
 		 zd = new ZadaniaSekcja(driver);
 		 zd.asercjaZadania();
-
 		 zd.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "Nowe srodowisko", "10");
 		 zd.dodajNoweZadanie();
 		 

@@ -1,4 +1,4 @@
-package Testy;
+package tests.othertests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

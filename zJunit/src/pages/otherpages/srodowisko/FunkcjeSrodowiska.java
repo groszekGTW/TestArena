@@ -1,4 +1,4 @@
-package Srodowisko;
+package pages.otherpages.srodowisko;
 
 
 

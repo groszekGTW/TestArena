@@ -1,4 +1,4 @@
-package Zadania;
+package pages.otherpages.zadania;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
