@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.PageUtils;
 
-public class LogowanieUzytkownika {
+public class LoginPage {
 
-	public LogowanieUzytkownika(WebDriver driver) {
+	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 
 	}

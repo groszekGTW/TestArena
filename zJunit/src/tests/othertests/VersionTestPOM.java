@@ -3,10 +3,13 @@ package tests.othertests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 
-import pages.loginpages.LogowanieUzytkownika;
+import pages.loginpages.LoginPage;
 import pages.otherpages.cockpit.MenuLeft;
 import pages.otherpages.version.VersionSection;
 import pages.otherpages.version.VersionAddingDetails;
@@ -14,7 +17,7 @@ import pages.otherpages.version.VersionAddingDetails;
 public class VersionTestPOM {
 	
 	protected WebDriver driver;
-	LogowanieUzytkownika lgp;
+	LoginPage lgp;
 	MenuLeft ml;
 	VersionSection ws;
 	VersionAddingDetails wsn;
@@ -27,31 +30,45 @@ public class VersionTestPOM {
 	 
 	 @Test
 	 public void test123() throws InterruptedException {
-		 lgp = new LogowanieUzytkownika(driver);
-		 lgp.loginAs("groszkowskimichal@gmail.com", "Gro3chu!");	
+		 LoginPage loginpage = new LoginPage(driver);
+		 loginpage.loginAs("groszkowskimichal@gmail.com", "Gro3chu!");	
 		 
-		 ml = new MenuLeft(driver);
-		 ml.otworzMenuWersje();
+		 MenuLeft menuleft = new MenuLeft(driver);
+		 menuleft.otworzMenuWersje();
 		 
-		 ws =  new VersionSection(driver);
-		 ws.asercjaWersje();
-		 ws.dodajNowaWersje();
+		 VersionSection versionsection =  new VersionSection(driver);
+		 versionsection.getTitlelView();
+		 String Expected = driver.findElement(By.xpath("//h1[@class='content_title']")).getText();
+		 Assert.assertEquals(Expected, "Wersje");
+		 versionsection.addNewVersion();
 		 
-		 wsn = new VersionAddingDetails(driver);
-		 wsn.zapiszNowaWersje("wersja4");
+		 VersionAddingDetails versionaddingdetails = new VersionAddingDetails(driver);
+		 versionaddingdetails.zapiszNowaWersje("wersja4");
 		 
-		 ws.sprawdzKomunikatPoZapisieWersji();
-		 ws.szukajWyniku("wersja4");
-		 ws.akcjeEdytuj();
+		 versionsection.getInfoBoxAfterSave();
+		 String Expected1 = driver.findElement(By.xpath("//div[@id='j_info_box']/p")).getText();
+		 Assert.assertEquals(Expected1, "Wersja zosta³a dodana.");
+
+		 versionsection.searchForResult("wersja4");
+		 versionsection.actionEdit();
 		 
-		 wsn.zapiszNowaWersje("wersja4.1");
+		 versionaddingdetails.zapiszNowaWersje("wersja4.1");
 		 
-		 ws.sprawdzKomunikatPoEdytowaniuWersji();
-		 ws.szukajWyniku("wersja4");
-		 ws.akcjeUsun();
-		 ws.sprawdzKomunikatPrzyProbieUsunieciaWersji();
-		 ws.dokonajDecyzjiTak();
-		 ws.sprawdzKomunikatPoUsunieciuWersji();
+		 versionsection.getInfoBoxAfterEdit();
+		 String Expected2 = driver.findElement(By.xpath("//div[@id='j_info_box']/p")).getText();
+		 Assert.assertEquals(Expected2, "Wersja zosta³a zapisana.");
+
+		 versionsection.searchForResult("wersja4.1");
+		 versionsection.actionDelete();
+		 versionsection.getInfoBoxAfterTryToDelete();
+		 String Expected3 = driver.findElement(By.xpath("//div[@id='j_popup_delete_version']/p")).getText();
+		 Assert.assertEquals(Expected3, "Czy na pewno chcesz usun¹æ t¹ wersjê?");
+
+		 versionsection.choseYes();
+		 versionsection.getInfoBoxAfterDelete();
+		 String Expected4 = driver.findElement(By.xpath("//div[@id='j_info_box']/p")).getText();
+		 Assert.assertEquals(Expected4, "Wersja zosta³a usuniêta.");
+
 		 
 		 
 		 

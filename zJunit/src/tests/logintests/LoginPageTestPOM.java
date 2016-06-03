@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pages.loginpages.LogowanieUzytkownika;
+import pages.loginpages.LoginPage;
 
 public class LoginPageTestPOM {	
 		
@@ -19,7 +19,7 @@ public class LoginPageTestPOM {
 			 
 			 @Test
 			 public void poprawneLogowanie() throws InterruptedException {
-				 LogowanieUzytkownika LoogowanieUzytkownika = new LogowanieUzytkownika(driver);
+				 LoginPage LoogowanieUzytkownika = new LoginPage(driver);
 				 LoogowanieUzytkownika.loginAs("groszkowskimichal@gmail.com", "Gro3chu!");
 				 
 			 }	 

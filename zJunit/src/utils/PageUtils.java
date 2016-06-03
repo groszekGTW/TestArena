@@ -1,6 +1,7 @@
 package utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,7 +31,19 @@ public class PageUtils {
 		WebElement webElement = driver.findElement(byElement);
 		webElement.isEnabled();
 		System.out.println("Pole " + textboxName + " jest dostêpne");
+		webElement.clear();
 		webElement.sendKeys(key);
+	}
+	
+	public static void sendKeyAndEnter(WebDriver driver, By byElement, String textboxName, String key) throws InterruptedException{
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(byElement));
+		WebElement webElement = driver.findElement(byElement);
+		webElement.isEnabled();
+		System.out.println("Pole " + textboxName + " jest dostêpne");
+		webElement.sendKeys(key);
+		Thread.sleep(2000);
+		webElement.sendKeys(Keys.ENTER);
 	}
 	
 	public static void selectFilter(WebDriver driver, By byElement, String textboxName, String key){
@@ -42,10 +55,11 @@ public class PageUtils {
 		Select dropDown = new Select(element); 
 		dropDown.selectByVisibleText(key);
 	}
-	public void getInfoBox(WebDriver driver, By byElement ){
+	
+	public static By  returnElement(WebDriver driver,By byElement){
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(byElement));
-		String Expected=driver.findElement(byElement).getText();
+		return byElement;
 	}
 
 }
