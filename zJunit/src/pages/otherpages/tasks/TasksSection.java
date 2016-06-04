@@ -3,8 +3,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
 import utils.PageUtils;
 
 public class TasksSection {
@@ -87,10 +85,6 @@ public class TasksSection {
 			PageUtils.click(driver, actionListClose, "akcja zamknij");
 		}
 		
-		public void asercjaZadania(){
-			String Expected=driver.findElement(getViewTitle()).getText();		 
-			Assert.assertEquals(Expected, "Zadania");
-		}
 		public void getInfoBox(){
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(infoBox));

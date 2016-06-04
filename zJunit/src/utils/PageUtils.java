@@ -11,11 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PageUtils {
 	
 	
-
-	public static void waitForVisible(WebDriver driver, WebElement element) {
-		(new WebDriverWait(driver, 200)).until(ExpectedConditions.visibilityOf(element));
-	}
-
 	public static void click(WebDriver driver, By byElement, String nazwaPola) {
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(byElement));

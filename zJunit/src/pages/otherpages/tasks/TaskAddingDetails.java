@@ -69,13 +69,13 @@ public class TaskAddingDetails {
 		public void addDescription(String description) throws InterruptedException{
 			PageUtils.sendKey(driver, descriptionField, "opis", description);
 			PageUtils.click(driver, titleView, "tytu³ widoku");
-
 		}
-		 public void zapiszZmiany(){
+						
+		 public void saveTask(){
 			PageUtils.click(driver, saveButton, "zapisz");
 		}
 		
-		 public void dodajNoweZadanie(String envirioment,String release, String version,String priority,String date,String someone,String title,String description) throws InterruptedException{
+		 public void addingNewTask(String envirioment,String release, String version,String priority,String date,String someone,String title,String description) throws InterruptedException{
 			 this.addEnvironment(envirioment);
 			 this.selectRelease(release);
 			 this.selectVersion(version);
@@ -84,7 +84,7 @@ public class TaskAddingDetails {
 			 this.asigneeSomeone(someone);
 			 this.addTitle(title);
 			 this.addDescription(description);
-			 this.zapiszZmiany();			 
+			 this.saveTask();			 
 		 }
 
 }

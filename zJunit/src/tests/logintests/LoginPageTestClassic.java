@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class LoginPageTestClassic {
 				
@@ -28,6 +29,9 @@ public class LoginPageTestClassic {
 			    Login.isEnabled();
 				System.out.println("Pole zaloguj jest dostêpne");
 			    Login.click();
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='user-info']/small")));
+			    String Expected=driver.findElement(By.xpath("//span[@class='user-info']/small")).getText();		 
+				Assert.assertEquals(Expected, "groszkowskimichal@gmail.com");
 			    driver.quit();  
 			}
 		

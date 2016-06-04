@@ -53,8 +53,7 @@ public class TaskTestsPOM {
 		 String Expected3=driver.findElement(By.xpath("//h1[@class='content_title']")).getText();		 
 		 Assert.assertEquals(Expected3, "Dodaj zadanie");
 
-		 
-		 taskaddingdetails.dodajNoweZadanie("Nowe srodowisko", "wyd1", "nowa wersja", "Krytyczny", "2018-08-23 23:59", "Mi", "tytul1", "opis opis opis");
+		 taskaddingdetails.addingNewTask("Nowe srodowisko", "wyd1", "nowa wersja", "Krytyczny", "2018-08-23 23:59", "Mi", "tytul1", "opis opis opis");
 		 
 		 TaskDetails taskdetails = new TaskDetails(driver);
 		 taskdetails.getInfoBox();

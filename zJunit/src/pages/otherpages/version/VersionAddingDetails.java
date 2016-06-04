@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import utils.PageUtils;
+
 public class VersionAddingDetails {
 	public VersionAddingDetails(WebDriver driver) {
 		this.driver = driver;
@@ -16,42 +18,33 @@ public class VersionAddingDetails {
 		WebDriverWait WebDriverWait;
 		WebElement WebElement;
 		
-	private By nazwaPole = By.xpath("//input[@id='name']");
-	private By zapisz = By.xpath("//input[@id='save']");
-	private By tytulWidoku = By.xpath("//h1[@class='content_title']");
+	private By nameField = By.xpath("//input[@id='name']");
+	private By saveButton = By.xpath("//input[@id='save']");
+	private By viewTitle = By.xpath("//h1[@class='content_title']");
 
 	
-	public By getTytulWidoku(){
+	public By getViewTitle(){
 		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(tytulWidoku));
-		return (tytulWidoku);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(viewTitle));
+		return (viewTitle);
 	}
 	
-	public void dodajNazwe(String nazwa){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(nazwaPole));
-		driver.findElement(nazwaPole).isEnabled();
-		System.out.println("Pole tytu³ jest dostêpne");
-		driver.findElement(nazwaPole).clear();
-		driver.findElement(nazwaPole).sendKeys(nazwa);
+	public void addName(String name){
+		PageUtils.sendKey(driver, nameField, "tytu³", name);
 	}
 	
-	public void zapiszWersje(){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(zapisz));
-		driver.findElement(zapisz).isEnabled();
-		System.out.println("Pole zapisz jest dostêpne");
-		driver.findElement(zapisz).click();
+	public void saveVersion(){
+		PageUtils.click(driver, saveButton, "zapisz");
 	}
 	
 	public void asercjaWersje(){
-		String Expected=driver.findElement(getTytulWidoku()).getText();		 
+		String Expected=driver.findElement(getViewTitle()).getText();		 
 		Assert.assertEquals(Expected, "Wersje");
 	}
 	
 	public void zapiszNowaWersje(String nazwa){
-		this.dodajNazwe(nazwa);
-		this.zapiszWersje();
+		this.addName(nazwa);
+		this.saveVersion();
 		
 	}
 
