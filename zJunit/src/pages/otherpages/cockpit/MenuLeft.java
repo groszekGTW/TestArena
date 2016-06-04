@@ -2,8 +2,7 @@ package pages.otherpages.cockpit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.PageUtils;
 
 public class MenuLeft {
 	
@@ -13,36 +12,19 @@ public class MenuLeft {
 		this.driver = driver;
 	}
 	
-	private By Zadania = By.xpath("//a[@href='http://testarena.gpe.pl/tasks']");
-	private By Srodowisko = By.xpath("//a[@href='http://testarena.gpe.pl/environments']");
-	private By wersje = By.xpath("//a[@href='http://testarena.gpe.pl/versions']");
+	private By tasks = By.xpath("//a[@href='http://testarena.gpe.pl/tasks']");
+	private By envirionment = By.xpath("//a[@href='http://testarena.gpe.pl/environments']");
+	private By version = By.xpath("//a[@href='http://testarena.gpe.pl/versions']");
 
-
-	public void otworzMenuSrodowisko(){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Srodowisko));
-		driver.findElement(Srodowisko).isEnabled();
-		System.out.println("Sekcja Srodowisko lewego panelu nawigacji jest dostêpna");
-		driver.findElement(Srodowisko).click();	
+	public void openMenuEnvirionment(){		
+		PageUtils.click(driver, envirionment, "Srodowisko lewego panelu nawigacji");
 	}
 	
-	public void otworzMenuZadania(){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Zadania));
-		driver.findElement(Zadania).isEnabled();
-		System.out.println("Sekcja zadania lewego panelu nawigacji jest dostêpna");
-		driver.findElement(Zadania).click();
+	public void openMenuTasks(){		
+		PageUtils.click(driver, tasks, "zadania lewego panelu nawigacji");
 	}
-	public void otworzMenuWersje(){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(wersje));
-		driver.findElement(wersje).isEnabled();
-		System.out.println("Sekcja Wersje lewego panelu nawigacji jest dostêpna");
-		driver.findElement(wersje).click();	
+	public void openMenuVersion(){	
+		PageUtils.click(driver, version, "wersje lewego panelu nawigacji");
 	}
-
-	
-
-	
 
 }

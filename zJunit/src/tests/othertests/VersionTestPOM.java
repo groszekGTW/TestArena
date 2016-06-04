@@ -33,7 +33,7 @@ public class VersionTestPOM {
 		 loginpage.loginAs("groszkowskimichal@gmail.com", "Gro3chu!");	
 		 
 		 MenuLeft menuleft = new MenuLeft(driver);
-		 menuleft.otworzMenuWersje();
+		 menuleft.openMenuVersion();
 		 
 		 VersionSection versionsection =  new VersionSection(driver);
 		 versionsection.getTitlelView();

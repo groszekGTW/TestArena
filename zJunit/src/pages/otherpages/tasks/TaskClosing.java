@@ -4,59 +4,44 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.PageUtils;
 
 public class TaskClosing {
 	
 	public TaskClosing(WebDriver driver) {
 		this.driver = driver;
-		}
+	}
 		
 		WebDriver driver;
 		WebDriverWait WebDriverWait;
 		WebElement WebElement;
 		
-		By srodowiska = By.id("token-input-environments");
-		By wersje = By.id("token-input-versions");
-		By StatusRozwiazaniaLista = By.id("resolutionId");
-		By zamknij = By.xpath("//input[@id='close']");
-		By anuluj =  By.xpath("//a[contains(.,'Anuluj')]");
-		By komentarzPole = By.xpath("//textarea[@id='comment']");
+		By environments = By.id("token-input-environments");
+		By versions = By.id("token-input-versions");
+		By resolutionId = By.id("resolutionId");
+		By closeButton = By.xpath("//input[@id='close']");
+		By cancelButton =  By.xpath("//a[contains(.,'Anuluj')]");
+		By commentField = By.xpath("//textarea[@id='comment']");
 		
-		
-		public void WybierzStatusRozwiazania(String status){
-			WebDriverWait wait = new WebDriverWait(driver, 5);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(StatusRozwiazaniaLista));
-			driver.findElement(StatusRozwiazaniaLista).isEnabled();
-			System.out.println("Pole Status rozwiazania jest dostêpne");
-			WebElement element = driver.findElement(StatusRozwiazaniaLista); 
-			Select dropDown = new Select(element); 
-			dropDown.selectByVisibleText(status);
+		public void selectResolution(String resolution){
+			PageUtils.selectFilter(driver, resolutionId, "Status rozwiazania jest", resolution);
 		}
 		
-		public void dodajKomentarz(String komentarz){
-			WebDriverWait wait = new WebDriverWait(driver, 5);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(komentarzPole));
-			driver.findElement(komentarzPole).isEnabled();
-			System.out.println("Pole komentarz jest dostêpne");
-			driver.findElement(komentarzPole).sendKeys(komentarz);
+		public void dodajKomentarz(String comment){		
+			PageUtils.sendKey(driver, commentField, "komentarz", comment);
 		}
 		
 		public void zamknijZadanie(){
-			WebDriverWait wait = new WebDriverWait(driver, 5);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(zamknij));
-			driver.findElement(zamknij).isEnabled();
-			System.out.println("Pole zamknij jest dostêpne");
-			driver.findElement(zamknij).click();
+			PageUtils.click(driver, closeButton, "zamknij");
 		}
 
-
-		public void zamykanieZadania(String status, String komentarz){
+		public void taskClosing(String resolution, String comment){
 			WebDriverWait wait = new WebDriverWait(driver, 5);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(komentarzPole));
-			this.WybierzStatusRozwiazania(status);
-			this.dodajKomentarz(komentarz);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(commentField));
+			this.selectResolution(resolution);
+			this.dodajKomentarz(comment);
 			this.zamknijZadanie();
 			
 		}

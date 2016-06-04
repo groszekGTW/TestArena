@@ -16,7 +16,6 @@ import pages.otherpages.cockpit.MenuLeft;
 
 public class TaskTestsPOM {
 	protected WebDriver driver;
-
 	 
 	@Before	
 	public void setup(){
@@ -35,41 +34,43 @@ public class TaskTestsPOM {
 		 Assert.assertEquals(Expected, "groszkowskimichal@gmail.com");
 				 	 		 
 		 MenuLeft menuleft = new MenuLeft(driver);
-		 menuleft.otworzMenuZadania();
+		 menuleft.openMenuTasks();
 			 
 		 TasksSection taskssection = new TasksSection(driver);
-		 		 
-		 WebElement viewTitle = driver.findElement(By.xpath("//h1[@class='content_title']"));
-		 String Expected1 = viewTitle.getText();		 
+		 taskssection.getViewTitle();
+		 String Expected1 = driver.findElement(By.xpath("//h1[@class='content_title']")).getText();		 
 		 Assert.assertEquals(Expected1, "Zadania");
 		 
 		 taskssection.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "Nowe srodowisko", "10");
 		 taskssection.addNewTask();
 		 
 		 TaskAddingDetails taskaddingdetails = new TaskAddingDetails(driver);
-		
+		 taskaddingdetails.getTitleView();
 		 String Expected2=driver.findElement(By.xpath("//h1[@class='content_title']")).getText();		 
 		 Assert.assertEquals(Expected2, "Dodaj zadanie");
 		 
-		 taskaddingdetails.asercjatytulWidoku();
+		 taskaddingdetails.getTitleView();
+		 String Expected3=driver.findElement(By.xpath("//h1[@class='content_title']")).getText();		 
+		 Assert.assertEquals(Expected3, "Dodaj zadanie");
+
 		 
 		 taskaddingdetails.dodajNoweZadanie("Nowe srodowisko", "wyd1", "nowa wersja", "Krytyczny", "2018-08-23 23:59", "Mi", "tytul1", "opis opis opis");
 		 
 		 TaskDetails taskdetails = new TaskDetails(driver);
 		 taskdetails.getInfoBox();
-		 String Expected3  = driver.findElement(By.id("j_info_box")).getText();
-		 Assert.assertEquals(Expected3, "Zadanie zosta³o dodane.");
+		 String Expected4  = driver.findElement(By.id("j_info_box")).getText();
+		 Assert.assertEquals(Expected4, "Zadanie zosta³o dodane.");
 
-		 menuleft.otworzMenuZadania();
+		 menuleft.openMenuTasks();
 		 
 		 taskssection.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "Nowe srodowisko", "10");
 		 taskssection.actionClose();
 		 
 		 TaskClosing taskclosing = new TaskClosing(driver);
-		 taskclosing.zamykanieZadania("Powodzenie", "komentarz");
+		 taskclosing.taskClosing("Powodzenie", "komentarz");
 		 taskssection.getInfoBox();
-		 String Expected4 = driver.findElement(By.id("j_info_box")).getText();
-		 Assert.assertEquals(Expected4, "Zadanie zosta³o zamkniête.");
+		 String Expected5 = driver.findElement(By.id("j_info_box")).getText();
+		 Assert.assertEquals(Expected5, "Zadanie zosta³o zamkniête.");
 		 
 		 taskssection.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "Nowe srodowisko", "10");
 

@@ -14,11 +14,11 @@ public class TaskDetails {
 		WebDriver driver;
 		WebDriverWait WebDriverWait;
 		
-		private By komunikat = By.id("j_info_box");
+		private By comment = By.id("j_info_box");
 
 		public void getInfoBox(){
 			WebDriverWait wait = new WebDriverWait(driver, 5);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(komunikat));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(comment));
 		}
 
 }
