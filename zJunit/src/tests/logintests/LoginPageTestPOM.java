@@ -22,7 +22,7 @@ public class LoginPageTestPOM {
 			 }
 			 
 			 @Test
-			 public void poprawneLogowanie() throws InterruptedException {
+			 public void loginToTestArena() throws InterruptedException {
 				 LoginPage LoogowanieUzytkownika = new LoginPage(driver);
 				 LoogowanieUzytkownika.loginAs("groszkowskimichal@gmail.com", "Gro3chu!");
 				 MenuTop menutop = new MenuTop(driver);
