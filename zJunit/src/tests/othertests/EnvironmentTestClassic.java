@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class EnviromentTestClassic {
+public class EnvironmentTestClassic {
 	
 	public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new FirefoxDriver();

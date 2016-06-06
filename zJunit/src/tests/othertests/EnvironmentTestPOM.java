@@ -16,7 +16,7 @@ import pages.otherpages.cockpit.MenuLeft;
 import pages.otherpages.environments.EnvironmentAddingDetails;
 import pages.otherpages.environments.EnvironmentSection;
 
-public class EnviromentTestPOM {
+public class EnvironmentTestPOM {
 	
 	protected WebDriver driver;
 	

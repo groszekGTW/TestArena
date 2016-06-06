@@ -1,5 +1,6 @@
 package tests.othertests;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -72,10 +73,13 @@ public class TaskTestsPOM {
 		 Assert.assertEquals(Expected5, "Zadanie zosta³o zamkniête.");
 		 
 		 taskssection.filtrowaniePrzezFiltry("Nowe", "Krytyczny", "Micha³ Groszkowski", "Micha³ Groszkowski", "Nowe srodowisko", "10");
-
 	
 	 }
 	 
+	 @After
+		public void closeBrowser() {
+			driver.quit();
+		}
 	
 
 }

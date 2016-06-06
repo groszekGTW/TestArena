@@ -56,11 +56,12 @@ public class TestsTestPOM {
 		 testsaddingdetails.getTitlelView();
 		 String Expected4= driver.findElement(By.xpath("//h1[@class='content_title']")).getText();		 
 		 Assert.assertEquals(Expected4, "Edytuj przypadek testowy");
-		 testsaddingdetails.saveTest("name", "description", "result");
+		 testsaddingdetails.saveTest("nameEDIT", "descriptionEDIT", "resultEDIT");
 		 
 		 testssection.getInfoBoxAfterSave();
 		 String Expected5= driver.findElement(By.xpath("//div[@id='j_info_box']/p")).getText();		 
 		 Assert.assertEquals(Expected5, "Przypadek testowy zosta³ wyedytowany.");
+		 testssection.searchForResult("nameEDIT");
 		 testssection.actionDelete();
 		 testssection.getInfoBoxAfterTryToDelete();
 		 testssection.choseYes();
