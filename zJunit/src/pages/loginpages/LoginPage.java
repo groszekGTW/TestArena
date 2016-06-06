@@ -30,7 +30,6 @@ public class LoginPage {
 		PageUtils.click(driver, btnLogIn, "przycisk login");
 	}
 	
-
 	public void loginAs(String email, String Password) {
 		this.setUsername(email);
 		this.setPassword(Password);

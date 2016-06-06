@@ -32,9 +32,9 @@ public class EnviromentTestPOM {
 		
 		EnvironmentSection enviromentSection = new EnvironmentSection(driver);
 		EnvironmentAddingDetails enviromentAdd = new EnvironmentAddingDetails(driver);
-		LoginPage LoogowanieUzytkownika = new LoginPage(driver);
+		LoginPage loginpage = new LoginPage(driver);
 		
-		LoogowanieUzytkownika.loginAs("grzegorzjasik@wp.pl", "Password12#");
+		loginpage.loginAs("grzegorzjasik@wp.pl", "Password12#");
 		WebElement userInfo = driver.findElement(By.xpath("//span[@class='user-info']/small"));
 		String Expected= userInfo.getText();		 
 		Assert.assertEquals(Expected, "grzegorzjasik@wp.pl");

@@ -16,6 +16,8 @@ public class MenuLeft {
 	private By envirionment = By.xpath("//a[@href='http://testarena.gpe.pl/environments']");
 	private By version = By.xpath("//a[@href='http://testarena.gpe.pl/versions']");
 	private By tests = By.xpath("//a[@href='http://testarena.gpe.pl/tests']");
+	private By btnRelease = By.xpath("//a[@href='http://testarena.gpe.pl/releases']");
+
 
 	public void openMenuEnvirionment(){		
 		PageUtils.click(driver, envirionment, "Srodowisko lewego panelu nawigacji");
@@ -31,6 +33,10 @@ public class MenuLeft {
 	
 	public void openMenuTests(){
 		PageUtils.click(driver, tests, "baza testów lewego panelu nawigacji");
+	}
+	
+	public void clickRelease(){
+		PageUtils.click(driver, btnRelease, "przycisk wydania");
 	}
 
 }

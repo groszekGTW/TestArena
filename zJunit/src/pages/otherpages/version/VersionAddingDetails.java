@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
 import utils.PageUtils;
 
 public class VersionAddingDetails {
@@ -37,12 +35,7 @@ public class VersionAddingDetails {
 		PageUtils.click(driver, saveButton, "zapisz");
 	}
 	
-	public void asercjaWersje(){
-		String Expected=driver.findElement(getViewTitle()).getText();		 
-		Assert.assertEquals(Expected, "Wersje");
-	}
-	
-	public void zapiszNowaWersje(String nazwa){
+	public void saveNewWersion(String nazwa){
 		this.addName(nazwa);
 		this.saveVersion();
 		

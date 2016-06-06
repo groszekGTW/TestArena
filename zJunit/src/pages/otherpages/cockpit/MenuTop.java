@@ -15,7 +15,9 @@ public class MenuTop {
 		this.driver = driver;
 	}
 	
-	private By user_info = By.xpath("//span[@class='user-info']/small");
+	private By userInfo = By.xpath("//span[@class='user-info']/small");
+	public  By userInf = By.xpath("//span[contains(@class,'user-info')]");
+
 	private By massageButton = By.xpath("//a[@class='top_messages']");
 
 	public void massage (){
@@ -24,7 +26,7 @@ public class MenuTop {
 	
 	public void getLogedUserInfo(){
 		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(user_info));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(userInfo));
 	}
 
 }

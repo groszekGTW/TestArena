@@ -21,11 +21,10 @@ public class EnvironmentAddingDetails {
 	private By environmentDescription = By.xpath("//textarea[@id='description']");
 	private By save = By.xpath("//input[@id='save']");
 	
-
 	public void addEnviromentName(String name){
 		PageUtils.sendKey(driver, environmentName, "name", name);
-	
 	}
+	
 	public void addDescription(String description){
 		PageUtils.sendKey(driver, environmentDescription, "description", description);
 	}
