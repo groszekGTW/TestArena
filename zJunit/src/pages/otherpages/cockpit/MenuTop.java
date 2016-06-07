@@ -10,7 +10,7 @@ import utils.PageUtils;
 public class MenuTop {
 	
 	protected WebDriver driver;
-
+	
 	public MenuTop(WebDriver driver) {
 		this.driver = driver;
 	}
